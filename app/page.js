@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Component, useState } from "react";
+import React, {  useState,useEffect,useRef } from "react";
 import { BsEnvelopeOpenFill, BsPauseBtn, BsPlay,BsEnvelopeHeartFill,BsCalendar2HeartFill,BsCamera2,BsChatLeftHeartFill } from "react-icons/bs";
 import { SlCalender } from "react-icons/sl";
 import { CiClock1 } from "react-icons/ci";
@@ -17,6 +17,9 @@ export default function Page(props) {
   const audioRef = React.createRef();
   // Function to toggle the visibility state
 
+  const scrollToSection = (sectionRef) => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
  const playMusic = () => {
     SetPlayMusic(true);
@@ -38,6 +41,59 @@ export default function Page(props) {
     SetPlayMusic(!isPlayMusic)
   };
 
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+  };
+
+
+  const [timeLeft, setTimeLeft] = useState({});
+  const [isClient, setIsClient] = useState(false);
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+  const section5Ref = useRef(null);
+
+
+  useEffect(() => {
+    setIsClient(true);
+
+    const calculateTimeLeft = () => {
+      const difference = +new Date("2024-12-31T00:00:00") - +new Date();
+      let timeLeft = {};
+
+      if (difference > 0) {
+        timeLeft = {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      } else {
+        timeLeft = {
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        };
+      }
+
+      return timeLeft;
+    };
+
+    setTimeLeft(calculateTimeLeft());
+
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!isClient) {
+    // Render nothing on the server to avoid hydration mismatch
+    return null;
+  }
   return (
     
     <main>
@@ -53,21 +109,21 @@ export default function Page(props) {
 
 
       <div style={{ display: isVisible ? "none" : "" }} className="fixed z-10 md:h-1/3 h-auto md:w-auto w-full  bg-indigo-700 md:right-0  md:top-1/3 bottom-0 items-center justify-between text-white p-3 rounded-lg flex md:flex-col gap-3">
-        <div className="flex flex-col items-center ">
+        <button onClick={() => scrollToSection(section1Ref)}  className="flex flex-col items-center ">
           <BsEnvelopeHeartFill className="h-8 w-8"/>
-        </div>
-        <div className="flex flex-col items-center ">
+        </button>
+        <button onClick={() => scrollToSection(section2Ref)}  className="flex flex-col items-center ">
         <FaHandHoldingHeart className="h-8 w-8"/>
-        </div>
-        <div className="flex flex-col items-center ">
+        </button>
+        <button onClick={() => scrollToSection(section3Ref)}  className="flex flex-col items-center ">
         <BsCalendar2HeartFill  className="h-8 w-8"/>
-        </div>
-        <div className="flex flex-col items-center ">
+        </button>
+        <button onClick={() => scrollToSection(section4Ref)}  className="flex flex-col items-center ">
         <BsCamera2 className="h-8 w-8"/>
-        </div>
-        <div className="flex flex-col items-center ">
+        </button>
+        <button onClick={() => scrollToSection(section5Ref)}  className="flex flex-col items-center ">
         <BsChatLeftHeartFill className="h-8 w-8"/>
-        </div>
+        </button>
       </div>
       {/* Overlay Landing */}
       {isVisible ? <section style={{ opacity: isVisible ? 1 : 0 }} className="absolute z-10 bg-pengantin-background  delay-700 md:bg-cover bg-contain md:bg-center bg-no-repeat w-full block h-screen flex items-center justify-center transition-all duration-500 ease-in-out overflow-hidden" >
@@ -91,7 +147,7 @@ export default function Page(props) {
       {/* Pendahuluan */}
       <div style={{ display: isVisible ? "none" : "block" }}>
 
-        <section className="bg-gray-100 py-0">
+        <section className="bg-gray-100 py-0" ref={section1Ref}>
           <div className="container mx-auto ">
             <div className="flex flex-wrap mx-2 py-20">
               <div className="w-full md:w-1/2 px-2 md:order-1 order-2">
@@ -101,11 +157,10 @@ export default function Page(props) {
                   <p className="md:text-6xl text-5xl font-great-vibes mt-10">Jhon & Sifa</p>
                   <p className="mt-2">Minggu,28 April 2024</p>
                   <div className="flex text-white gap-2" >
-                    <div className="p-3 bg-blue-900 rounded-lg text-center "> 0 Hari</div>
-                    <div className="p-3 bg-blue-900 rounded-lg text-center "> 0 Jam</div>
-                    <div className="p-3 bg-blue-900 rounded-lg text-center "> 0 Menit</div>
-                    <div className="p-3 bg-blue-900 rounded-lg text-center "> 0 Detik</div>
-
+                    <div className="p-3 bg-blue-900 rounded-lg text-center "> {timeLeft.days} Hari</div>
+                    <div className="p-3 bg-blue-900 rounded-lg text-center "> {timeLeft.hours} Jam</div>
+                    <div className="p-3 bg-blue-900 rounded-lg text-center "> {timeLeft.minutes} Menit</div>
+                    <div className="p-3 bg-blue-900 rounded-lg text-center "> {timeLeft.seconds} Detik</div>
                   </div>
                 </div>
               </div>
@@ -121,7 +176,7 @@ export default function Page(props) {
           </div>
         </section>
 
-        <section className="bg-indigo-800 py-0">
+        <section className="bg-indigo-800 py-0" >
           <div className="container mx-auto text-center">
           <ScrollAnimation animateIn="fadeIn">
             <div className="p-5 text-white md:w-1/2 mx-auto flex flex-col gap-4">
@@ -135,7 +190,7 @@ export default function Page(props) {
           </div>
         </section>
 
-        <section className="bg-gray-100 py-0">
+        <section className="bg-gray-100 py-0" >
           <div className="container mx-auto ">
             <div className="flex flex-wrap mx-2 py-10 text-center">
             <ScrollAnimation animateIn="fadeIn">
@@ -170,7 +225,7 @@ export default function Page(props) {
           </div>
         </section>
 
-        <section className="py-0">
+        <section className="py-0" ref={section3Ref}>
           <div className="container mx-auto ">
             <ScrollAnimation animateIn="fadeIn">
             <div className="flex flex-wrap mx-2 py-5 text-center">
@@ -220,7 +275,7 @@ export default function Page(props) {
                       loading="lazy"
                     ></iframe>
                   </div>
-                  <button className="p-3 bg-indigo-800 rounded-lg flex items-center gap-2 text-white"  ><FaMapMarkedAlt /> Lihat Lokasi</button>
+                  <a href="https://maps.app.goo.gl/ziVDQ7DfFPi7vz5NA" target="blank" className="p-3 bg-indigo-800 rounded-lg flex items-center gap-2 text-white"  ><FaMapMarkedAlt /> Lihat Lokasi</a>
                 </div>
               </div>
             </div>
@@ -229,7 +284,7 @@ export default function Page(props) {
           </div>
         </section>
 
-        <section className="bg-gray-100 py-0">
+        <section className="bg-gray-100 py-0" ref={section4Ref}>
           <div className="container mx-auto ">
           <ScrollAnimation animateIn="fadeIn">
             <div className="flex flex-wrap mx-2 py-10 text-center ">
@@ -251,21 +306,29 @@ export default function Page(props) {
           </div>
         </section>
 
-        <section className=" py-0">
+        <section className=" py-0" ref={section2Ref}>
           <div className="container mx-auto ">
           <ScrollAnimation animateIn="fadeIn">
             <div className="flex flex-wrap mx-2 py-20 text-center ">
               <div className="w-full py-10">
                 <p className="md:text-6xl text-5xl font-dancing-script">Wedding Gift</p>
                 <h3 className="md:text-2xl text-1xl md:w-1/2 mx-auto mt-5">Bagi keluarga dan sahabat yang ingin mengirimkan hadiah, silakan mengirimkannya melalui tautan berikut:</h3>
-                <img src="/assets/BCA_logo_Bank_Central_Asia.png" className="h-10 mx-auto my-10" alt="Descriptive Alt Text" />
-                <p className="mt-2">transfer ke rekening BCA a.n Jhon Doe</p>
-                <p className="mt-2">7985494495</p>
-                <button className="p-3 bg-indigo-800 rounded-lg mx-auto mt-2 flex items-center gap-2 text-white"  ><FaCopy /> Salin No. rekening</button>
-
+                <div className="flex flex-wrap gap-10 justify-center my-10">
+                    <div>
+                       <img src="/assets/BCA_logo_Bank_Central_Asia.png" className="h-10 mx-auto my-10" alt="Descriptive Alt Text" />
+                       <p className="mt-2">transfer ke rekening BCA a.n Jhon Doe</p>
+                       <p className="mt-2">7985494495</p>
+                      <button className="p-3 bg-indigo-800 rounded-lg mx-auto mt-2 flex items-center gap-2 text-white" onClick={()=>handleCopy("7985494495")}  ><FaCopy /> Salin No. rekening</button>
+                    </div>
+                    <div>
+                       <img src="/assets/BCA_logo_Bank_Central_Asia.png" className="h-10 mx-auto my-10" alt="Descriptive Alt Text" />
+                       <p className="mt-2">transfer ke rekening BCA a.n Jhon Doe</p>
+                       <p className="mt-2">7985494495</p>
+                      <button className="p-3 bg-indigo-800 rounded-lg mx-auto mt-2 flex items-center gap-2 text-white" onClick={()=>handleCopy("7985494495")}  ><FaCopy /> Salin No. rekening</button>
+                    </div>
+                </div>
+       
               </div>
-
-
             </div>
             </ScrollAnimation>
           </div>
@@ -290,7 +353,7 @@ export default function Page(props) {
           </div>
         </section>
 
-        <section className="py-5">
+        <section className="py-5" ref={section5Ref}>
           <div className="container mx-auto ">
             <div className="md:w-1/2 w-full p-4 mx-auto ">
               <h2 className="text-lg font-semibold mb-4">Berikan Ucapan Spesial Anda Disini :</h2>
