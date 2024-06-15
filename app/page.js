@@ -16,6 +16,7 @@ import { FaCopy, FaMapMarkedAlt } from 'react-icons/fa';
 import { FaHandHoldingHeart } from 'react-icons/fa6';
 import 'animate.css/animate.compat.css';
 import ScrollAnimation from 'react-animate-on-scroll';
+import CountdownTimer from './(components)/CountdownTimer';
 
 const Page = (props) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -25,6 +26,7 @@ const Page = (props) => {
     name: '',
     message: '',
   });
+  const targetDate = '2024-08-31T00:00:00';
 
   useEffect(() => {
     fetchData();
@@ -164,25 +166,7 @@ const Page = (props) => {
                   <p className='md:text-6xl text-5xl font-great-vibes mt-10'>
                     Jhon & Sifa
                   </p>
-                  <p className='mt-2'>Minggu,28 April 2024</p>
-                  <div className='flex text-white gap-2'>
-                    <div className='p-3 bg-blue-900 rounded-lg text-center '>
-                      {' '}
-                      0 Hari
-                    </div>
-                    <div className='p-3 bg-blue-900 rounded-lg text-center '>
-                      {' '}
-                      0 Jam
-                    </div>
-                    <div className='p-3 bg-blue-900 rounded-lg text-center '>
-                      {' '}
-                      0 Menit
-                    </div>
-                    <div className='p-3 bg-blue-900 rounded-lg text-center '>
-                      {' '}
-                      0 Detik
-                    </div>
-                  </div>
+                  <CountdownTimer targetDate={targetDate} />
                 </div>
               </div>
               <div className='w-full md:w-1/2 px-2 md:order-2 order-1 text-center'>
@@ -443,6 +427,7 @@ const Page = (props) => {
                   type='text'
                   id='name'
                   name='name'
+                  placeholder='Nama'
                   value={formValues.name}
                   onChange={handleChange}
                   className='w-full p-2 border border-gray-300 rounded-md'
@@ -465,7 +450,7 @@ const Page = (props) => {
               </form>
             </div>
 
-            <div className='md:w-1/2 w-full p-4 mx-auto '>
+            <div className='md:w-1/2 w-full p-4 mx-auto mb-10'>
               <ul className='space-y-2'>
                 {formDataList?.map((data, index) => (
                   <li
