@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   BsEnvelopeOpenFill,
   BsPauseBtn,
@@ -26,7 +26,17 @@ const Page = (props) => {
     name: '',
     message: '',
   });
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+  const section5Ref = useRef(null);
+
   const targetDate = '2024-08-31T00:00:00';
+
+  const scrollToSection = (sectionRef) => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     fetchData();
@@ -107,27 +117,42 @@ const Page = (props) => {
         style={{ display: isVisible ? 'none' : '' }}
         className='fixed z-10 md:h-1/3 h-auto md:w-auto w-full  bg-indigo-700 md:right-0  md:top-1/3 bottom-0 items-center justify-between text-white p-3 rounded-lg flex md:flex-col gap-3'
       >
-        <div className='flex flex-col items-center '>
+        <button
+          onClick={() => scrollToSection(section1Ref)}
+          className='flex flex-col items-center '
+        >
           <BsEnvelopeHeartFill className='h-8 w-8' />
-        </div>
-        <div className='flex flex-col items-center '>
+        </button>
+        <button
+          onClick={() => scrollToSection(section2Ref)}
+          className='flex flex-col items-center '
+        >
           <FaHandHoldingHeart className='h-8 w-8' />
-        </div>
-        <div className='flex flex-col items-center '>
+        </button>
+        <button
+          onClick={() => scrollToSection(section3Ref)}
+          className='flex flex-col items-center '
+        >
           <BsCalendar2HeartFill className='h-8 w-8' />
-        </div>
-        <div className='flex flex-col items-center '>
+        </button>
+        <button
+          onClick={() => scrollToSection(section4Ref)}
+          className='flex flex-col items-center '
+        >
           <BsCamera2 className='h-8 w-8' />
-        </div>
-        <div className='flex flex-col items-center '>
+        </button>
+        <button
+          onClick={() => scrollToSection(section5Ref)}
+          className='flex flex-col items-center '
+        >
           <BsChatLeftHeartFill className='h-8 w-8' />
-        </div>
+        </button>
       </div>
       {/* Overlay Landing */}
       {isVisible ? (
         <section
           style={{ opacity: isVisible ? 1 : 0 }}
-          className='absolute z-10 bg-pengantin-background  delay-700 md:bg-cover bg-contain md:bg-center bg-no-repeat w-full block h-screen flex items-center justify-center transition-all duration-500 ease-in-out overflow-hidden'
+          className='absolute z-10 bg-pengantin-background  delay-700 md:bg-cover bg-contain md:bg-center bg-no-repeat w-full h-screen flex items-center justify-center transition-all duration-500 ease-in-out overflow-hidden'
         >
           <div className='relative md:min-h-[600px] md:min-w-[70%] md:mt-0  min-h-[500px] mt-[270px] min-w-full bg-black md:bg-opacity-50 p-7 flex flex-col gap-7 text-white items-center justify-center '>
             {/* Nama Pengantin  */}
