@@ -44,7 +44,7 @@ export default function Message() {
     <section className='py-5 bg-accent'>
       <div className='container mx-auto '>
         <div className='md:w-1/2 w-full p-4 mx-auto '>
-          <h2 className='text-lg font-semibold mb-4'>
+          <h2 className='text-lg font-semibold mb-4 text-center'>
             Berikan Ucapan Spesial Anda Disini :
           </h2>
           <form className='space-y-4' onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ export default function Message() {
               placeholder='Nama'
               value={formValues.name}
               onChange={handleChange}
-              className='w-full p-2 border border-gray-300 rounded-md'
+              className='w-full p-2 border border-gray-300 rounded-md text-black'
             />
             <textarea
               id='message'
@@ -63,12 +63,12 @@ export default function Message() {
               value={formValues.message}
               onChange={handleChange}
               placeholder='Beri Ucapan'
-              className='w-full p-2 border border-gray-300 rounded-md'
+              className='w-full p-2 border border-gray-300 rounded-md text-black'
               rows='3'
             ></textarea>
             <button
               type='submit'
-              className='w-full bg-indigo-800 text-white p-2 rounded-md hover:bg-indigo-600'
+              className='w-full bg-primary text-white p-2 rounded-md'
             >
               Kirim
             </button>

@@ -1,6 +1,11 @@
-import { BsPauseBtn, BsPlay } from "react-icons/bs";
+import { BsPauseBtn, BsPlay } from 'react-icons/bs';
 
-export default function AudioPlayer({ isPlayMusic, audioRef, toggleMusicPlay }) {
+export default function AudioPlayer({
+  isPlayMusic,
+  audioRef,
+  toggleMusicPlay,
+  isVisible,
+}) {
   return (
     <div>
       <audio
@@ -11,12 +16,15 @@ export default function AudioPlayer({ isPlayMusic, audioRef, toggleMusicPlay }) 
       />
       <button
         onClick={toggleMusicPlay}
-        className='fixed top-4 right-4 z-10 flex items-center justify-center bg-white p-1  text-dark rounded-full shadow-lg  transition-colors duration-200 ease-in-out '
+        className={
+          `fixed top-4 right-4 z-10 flex items-center justify-center bg-white p-1  text-dark rounded-full shadow-lg  transition-colors duration-200 ease-in-out ` +
+          (isVisible ? 'invisible' : 'visible')
+        }
       >
         {isPlayMusic ? (
-          <BsPauseBtn className='w-6 h-6' />
+          <BsPauseBtn className='w-6 h-6' color='black' />
         ) : (
-          <BsPlay className='w-6 h-6' />
+          <BsPlay className='w-6 h-6' color='black' />
         )}
       </button>
     </div>

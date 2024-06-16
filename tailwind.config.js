@@ -11,14 +11,25 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'pengantin-background':
-          "url('/assets/pexels-enes-cihanger-610993519-19867153.jpg')",
+        'pengantin-background': "url('/assets/photo-1.png')",
       },
       fontFamily: {
         'great-vibes': ['"Pacifico"', 'cursive'], // Ensure the font name matches exactly
         'dancing-script': ['"Dancing Script"', 'cursive'], // Ensure the font name matches exactly
       },
       height: {
+        '1/10': '10%',
+        '2/10': '20%',
+        '3/10': '30%',
+        '4/10': '40%',
+        '5/10': '50%',
+        '6/10': '60%',
+        '7/10': '70%',
+        '8/10': '80%',
+        '9/10': '90%',
+        '10/10': '100%',
+      },
+      width: {
         '1/10': '10%',
         '2/10': '20%',
         '3/10': '30%',

@@ -2,19 +2,20 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import { CiClock1 } from 'react-icons/ci';
 import { FaMapMarkedAlt } from 'react-icons/fa';
 import { SlCalender } from 'react-icons/sl';
+import WrapperSection from './WrapperSection';
 
-export default function Section7() {
+export default function Section7({ section7Ref }) {
   return (
-    <section className='bg-primary'>
-      <div className='container mx-auto '>
-        <ScrollAnimation animateIn='fadeIn'>
-          <div className='flex flex-wrap mx-2 py-5 text-center'>
+    <section className='bg-primary relative py-5' ref={section7Ref}>
+      <ScrollAnimation animateIn='fadeIn'>
+        <WrapperSection>
+          <div className='flex flex-wrap text-center'>
             <div className='w-full py-10 flex flex-col items-center gap-2'>
               <h3 className='md:text-2xl text-1xl'>
                 Acara Akan Dilaksanakan Pada :
               </h3>
               <img
-                src='/assets/ICON-22-2-1.png'
+                src='/assets/icon-ring.png'
                 className='w-32 h-32 image-gray mt-2'
                 alt='Descriptive Alt Text'
               />
@@ -66,14 +67,14 @@ export default function Section7() {
                     loading='lazy'
                   ></iframe>
                 </div>
-                <button className='p-3 bg-indigo-800 rounded-lg flex items-center gap-2 text-white'>
+                <button className='p-3 bg-accent rounded-lg flex items-center gap-2 text-white'>
                   <FaMapMarkedAlt /> Lihat Lokasi
                 </button>
               </div>
             </div>
           </div>
-        </ScrollAnimation>
-      </div>
+        </WrapperSection>
+      </ScrollAnimation>
     </section>
   );
 }

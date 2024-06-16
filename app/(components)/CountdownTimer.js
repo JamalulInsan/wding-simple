@@ -46,16 +46,16 @@ const CountdownTimer = ({ targetDate }) => {
     <div className='flex flex-col items-center'>
       <div className='text-lg mt-2 mb-4'>{formattedTargetDate}</div>
       <div className='flex text-white gap-2'>
-        <div className='p-3 bg-blue-900 rounded-lg text-center'>
+        <div className='p-3 bg-accent rounded-lg text-center'>
           {timeLeft.days || 0} Hari
         </div>
-        <div className='p-3 bg-blue-900 rounded-lg text-center'>
+        <div className='p-3 bg-accent rounded-lg text-center'>
           {timeLeft.hours || 0} Jam
         </div>
-        <div className='p-3 bg-blue-900 rounded-lg text-center'>
+        <div className='p-3 bg-accent rounded-lg text-center'>
           {timeLeft.minutes || 0} Menit
         </div>
-        {/* <div className='p-3 bg-blue-900 rounded-lg text-center'>
+        {/* <div className='p-3 bg-accent rounded-lg text-center'>
           {timeLeft.seconds || 0} Detik
         </div> */}
       </div>
