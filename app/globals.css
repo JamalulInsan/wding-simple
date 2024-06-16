@@ -4,11 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#__next {
+  height: 100%;
+  @apply text-default-text;
+}
+
 .image-container-masking{
     -webkit-mask-image: url('/assets/MASKING.svg');
     -webkit-mask-size: contain;
     -webkit-mask-position: center center;
     -webkit-mask-repeat: no-repeat;
+}
+
+.bg-primary {
+  background-color: #A91D3A;
+}
+
+.bg-accent {
+  background-color: #151515;
 }
 
 .image-gray{
