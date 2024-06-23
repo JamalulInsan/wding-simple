@@ -41,7 +41,7 @@ export default function Message() {
   };
 
   return (
-    <section className='py-5 bg-accent'>
+    <section className='py-5 bg-accent border-t-2 border-[#C4AC83]'>
       <div className='container mx-auto '>
         <div className='md:w-1/2 w-full p-4 mx-auto '>
           <h2 className='text-lg font-semibold mb-4 text-center'>

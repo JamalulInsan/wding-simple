@@ -16,10 +16,6 @@ export default function Section1({ targetDate, section1Ref }) {
               <div className='image-container-masking min-h-1/4 flex items-center justify-center'>
                 <img src='/assets/photo-1.png' alt='Descriptive Alt Text' />
               </div>
-              <p className='md:text-2xl text-2xl'>
-                You Are invited To <br />
-                The Wedding Of
-              </p>
               <p className='md:text-6xl text-5xl font-great-vibes'>
                 Jhon & Sifa
               </p>

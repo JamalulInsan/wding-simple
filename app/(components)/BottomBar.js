@@ -24,25 +24,25 @@ export default function BottomBar({
         onClick={() => scrollToSection(section1Ref)}
         className='flex flex-col items-center'
       >
-        <BsEnvelopeHeartFill className='h-8 w-8' />
+        <BsCalendar2HeartFill className='h-8 w-8' />
       </button>
       <button
         onClick={() => scrollToSection(section2Ref)}
         className='flex flex-col items-center'
       >
-        <FaHandHoldingHeart className='h-8 w-8' />
+        <BsEnvelopeHeartFill className='h-8 w-8' />
       </button>
       <button
         onClick={() => scrollToSection(section3Ref)}
         className='flex flex-col items-center'
       >
-        <BsCalendar2HeartFill className='h-8 w-8' />
+        <BsCamera2 className='h-8 w-8' />
       </button>
       <button
         onClick={() => scrollToSection(section4Ref)}
         className='flex flex-col items-center'
       >
-        <BsCamera2 className='h-8 w-8' />
+        <FaHandHoldingHeart className='h-8 w-8' />
       </button>
       <button
         onClick={() => scrollToSection(section5Ref)}

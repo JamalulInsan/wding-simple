@@ -2,15 +2,9 @@ import { BsEnvelopeOpenFill } from 'react-icons/bs';
 
 export default function OverlayLanding({ to, toggleVisibility }) {
   return (
-    <section className='bg-accent h-screen flex flex-col items-center justify-center'>
-      {/* <div className='h-3/10 flex items-center justify-center p-4'>
-        <img
-          src='/assets/photo-1.png'
-          alt='Image description'
-          className='w-full h-full object-cover rounded-lg'
-        />
-      </div> */}
-
+    <section
+      className={`bg-accent h-screen flex flex-col items-center justify-center image-opening`}
+    >
       <div className='h-7/10 bg-primary flex flex-col items-center justify-center text-center p-10'>
         <img
           src='/assets/photo-1.png'

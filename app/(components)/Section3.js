@@ -8,18 +8,16 @@ export default function Section3({ section3Ref }) {
         <WrapperSection>
           <div className='h-screen flex flex-wrap justify-center items-center'>
             <div className='w-full'>
-              <h3 className='text-center'>
-                Tiada Yang Dapat Kami Ungkapkan Selain Rasa Terimakasih Dari
-                Hati Yang Tulus Apabila Bapak/ Ibu/ Saudara/i Berkenan Hadir
-                Untuk Memberikan Do’a Restu Kepada Kami
-              </h3>
-              <div className='w-full  px-2 flex flex-col items-center gap-3'>
-                <div className='image-container-masking min-h-1/2 flex items-center  justify-center'>
-                  <img src='/assets/photo-1.png' alt='Descriptive Alt Text' />
-                </div>
-                <p className='md:text-6xl text-5xl font-great-vibes'>
-                  Jhon & Sifa
-                </p>
+              <p className='md:text-6xl text-5xl font-dancing-script my-3 text-center'>
+                Wedding Gallery
+              </p>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-3 mx-auto p-4 max-w-[800px] md:max-w-1/2 place-items-center'>
+                <img className='rounded' src='/assets/photo-1.png' />
+                <img className='rounded' src='/assets/photo-1.png' />
+                <img className='rounded' src='/assets/photo-1.png' />
+                <img className='rounded' src='/assets/photo-1.png' />
+                <img className='rounded' src='/assets/photo-1.png' />
+                <img className='rounded' src='/assets/photo-1.png' />
               </div>
             </div>
           </div>

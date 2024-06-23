@@ -3,32 +3,27 @@ import WrapperSection from './WrapperSection';
 
 export default function Section5({ section5Ref }) {
   return (
-    <section className='bg-primary relative h-screen' ref={section5Ref}>
+    <section className='bg-primary relative py-5' ref={section5Ref}>
       <ScrollAnimation animateIn='fadeIn'>
         <WrapperSection>
-          <div className='h-screen flex flex-wrap justify-center items-center'>
-            <div className='w-full text-center'>
-              <div className='w-full flex items-center justify-center text-center'>
-                <h3 className='w-8/12'>
-                  Dengan Memohon Rahmat Dan Ridho Dari Allah SWT. Kami Bermaksud
-                  Menyelenggarakan Syukuran Pernikahan Kami
-                </h3>
-              </div>
-              <div className='image-container-masking flex items-center  justify-center'>
-                <img src='/assets/photo-1.png' alt='Descriptive Alt Text' />
-              </div>
-              <p className='md:text-6xl text-5xl font-great-vibes'>Jhon</p>
-              <p>
-                Putra dari <br />
-                Bpk. Jhon Doe & Siti
-              </p>
-              <h3 className='md:text-6xl text-5xl font-great-vibes'>&</h3>
-              <p className='md:text-6xl text-5xl font-great-vibes'>Sifa</p>
-              <p>
-                Putri dari <br />
-                Bpk. Jhon Doe & Siti
+          <div className='p-5 text-white md:w-1/2 mx-auto flex flex-col gap-4 text-center'>
+            <div className='flex items-center justify-center'>
+              <p className='w-7/10'>
+                وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ
+                اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ
+                بَيْنَكُمْمَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ
+                لِّقَوْمٍ يَّتَفَكَّرُوْنَ
               </p>
             </div>
+            <p>
+              Dan Di Antara Tanda-Tanda (Kebesaran)-Nya Ialah Dia Menciptakan
+              Pasangan-Pasangan Untukmu Dari Jenismu Sendiri, Agar Kamu
+              Cenderung Dan Merasa Tenteram Kepadanya, Dan Dia Menjadikan Di
+              Antaramu Rasa Kasih Dan Sayang. Sungguh, Pada Yang Demikian Itu
+              Benar-Benar Terdapat Tanda-Tanda (Kebesaran Allah) Bagi Kaum Yang
+              Berpikir.
+            </p>
+            <p>QS. Ar-Rum Ayat 21</p>
           </div>
         </WrapperSection>
       </ScrollAnimation>
